@@ -4,4 +4,6 @@ import com.asg.employeeservice.Dto.EmployeeDto;
 
 public interface EmployeeService {
     EmployeeDto save(EmployeeDto employeeDto);
+
+    EmployeeDto getEmployeeById(Long id);
 }

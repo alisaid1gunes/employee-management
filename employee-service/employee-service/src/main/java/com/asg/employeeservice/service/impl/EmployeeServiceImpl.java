@@ -5,7 +5,6 @@ import com.asg.employeeservice.entity.Employee;
 import com.asg.employeeservice.repository.EmployeeRepository;
 import com.asg.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +25,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 savedEmployee.getFirstName(),
                 savedEmployee.getLastName(),
                 savedEmployee.getEmail()
+        );
+    }
+
+    @Override
+    public EmployeeDto getEmployeeById(Long id) {
+        Employee employee = employeeRepository.findById(id).get();
+        return new EmployeeDto(
+                employee.getId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail()
         );
     }
 }
