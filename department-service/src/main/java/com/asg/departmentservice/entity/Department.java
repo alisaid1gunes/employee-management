@@ -18,7 +18,7 @@ public class Department {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "code",nullable = false)
+    @Column(name = "code",nullable = false, unique = true)
     private String code;
 
 }
