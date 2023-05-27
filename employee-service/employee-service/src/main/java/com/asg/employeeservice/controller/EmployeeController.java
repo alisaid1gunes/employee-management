@@ -1,10 +1,9 @@
 package com.asg.employeeservice.controller;
 
 import com.asg.employeeservice.Dto.EmployeeDto;
-import com.asg.employeeservice.entity.Employee;
 import com.asg.employeeservice.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +15,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping
-    public ResponseEntity<EmployeeDto> save(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> save(@RequestBody @Valid EmployeeDto employeeDto) {
         EmployeeDto savedEmployee = employeeService.save(employeeDto);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
