@@ -1,6 +1,6 @@
 package com.asg.employeeservice.service.impl;
 
-import com.asg.employeeservice.Dto.EmployeeDto;
+import com.asg.employeeservice.dto.EmployeeDto;
 import com.asg.employeeservice.entity.Employee;
 import com.asg.employeeservice.exception.EmailAlreadyExistException;
 import com.asg.employeeservice.exception.ResourceNotFoundException;

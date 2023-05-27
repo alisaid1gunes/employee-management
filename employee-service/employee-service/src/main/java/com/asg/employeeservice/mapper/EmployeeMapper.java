@@ -1,6 +1,6 @@
 package com.asg.employeeservice.mapper;
 
-import com.asg.employeeservice.Dto.EmployeeDto;
+import com.asg.employeeservice.dto.EmployeeDto;
 import com.asg.employeeservice.entity.Employee;
 
 public class EmployeeMapper implements AutoEmployeeMapper{

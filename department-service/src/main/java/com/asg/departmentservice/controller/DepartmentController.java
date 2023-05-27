@@ -2,6 +2,7 @@ package com.asg.departmentservice.controller;
 
 import com.asg.departmentservice.dto.DepartmentDto;
 import com.asg.departmentservice.service.DepartmentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @PostMapping
-    public ResponseEntity<DepartmentDto> save(@RequestBody DepartmentDto departmentDto) {
+    public ResponseEntity<DepartmentDto> save(@Valid @RequestBody DepartmentDto departmentDto) {
         DepartmentDto savedDepartment = departmentService.save(departmentDto);
         return new ResponseEntity<>(savedDepartment, HttpStatus.CREATED);
     }

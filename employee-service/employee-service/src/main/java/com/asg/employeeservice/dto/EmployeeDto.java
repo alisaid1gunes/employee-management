@@ -1,4 +1,4 @@
-package com.asg.employeeservice.Dto;
+package com.asg.employeeservice.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

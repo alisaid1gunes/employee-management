@@ -1,6 +1,6 @@
 package com.asg.employeeservice.controller;
 
-import com.asg.employeeservice.Dto.EmployeeDto;
+import com.asg.employeeservice.dto.EmployeeDto;
 import com.asg.employeeservice.service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
