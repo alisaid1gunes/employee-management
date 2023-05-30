@@ -1,5 +1,6 @@
 package com.asg.employeeservice.controller;
 
+import com.asg.employeeservice.dto.APIResponseDto;
 import com.asg.employeeservice.dto.EmployeeDto;
 import com.asg.employeeservice.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -21,8 +22,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
-        EmployeeDto employeeDto = employeeService.getEmployeeById(id);
-        return new ResponseEntity<>(employeeDto, HttpStatus.OK);
+    public ResponseEntity<APIResponseDto> getEmployeeById(@PathVariable Long id) {
+        APIResponseDto apiResponseDto = employeeService.getEmployeeById(id);
+        return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
     }
 }
