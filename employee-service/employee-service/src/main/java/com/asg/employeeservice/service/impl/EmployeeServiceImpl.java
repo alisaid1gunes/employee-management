@@ -11,10 +11,8 @@ import com.asg.employeeservice.repository.EmployeeRepository;
 import com.asg.employeeservice.service.APIClient;
 import com.asg.employeeservice.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
+
 
 import java.util.Optional;
 
