@@ -10,6 +10,7 @@ import com.asg.employeeservice.mapper.AutoEmployeeMapper;
 import com.asg.employeeservice.repository.EmployeeRepository;
 import com.asg.employeeservice.service.APIClient;
 import com.asg.employeeservice.service.EmployeeService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @CircuitBreaker(name = "${spring.application.name}", fallbackMethod = "getEmployeeByIdFallback")
     public APIResponseDto getEmployeeById(Long id) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee", "Id", id));
         /*ResponseEntity<DepartmentDto> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/departments/" + employee.getDepartmentCode(), DepartmentDto.class);
@@ -49,6 +51,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeDto employeeDto = AutoEmployeeMapper.MAPPER.mapToEmployeeDto(employee);
         APIResponseDto apiResponseDto = new APIResponseDto();
         apiResponseDto.setEmployee(employeeDto);
+        apiResponseDto.setDepartment(departmentDto);
+        return apiResponseDto;
+    }
+
+    public APIResponseDto getEmployeeByIdFallback(Long id, Exception exception) {
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee", "Id", id));
+        EmployeeDto employeeDto = AutoEmployeeMapper.MAPPER.mapToEmployeeDto(employee);
+        APIResponseDto apiResponseDto = new APIResponseDto();
+        apiResponseDto.setEmployee(employeeDto);
+        DepartmentDto departmentDto = new DepartmentDto();
+        departmentDto.setCode("RD001");
+        departmentDto.setName("R&D Department");
+        departmentDto.setDescription("Research and Development Department");
         apiResponseDto.setDepartment(departmentDto);
         return apiResponseDto;
     }
