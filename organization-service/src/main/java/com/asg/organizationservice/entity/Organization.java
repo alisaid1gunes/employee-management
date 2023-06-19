@@ -1,21 +1,35 @@
 package com.asg.organizationservice.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "organizations")
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Organization {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "name", nullable = false, unique = true, length = 100)
+    private String name;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "code", nullable = false, unique = true, length = 50)
+    private String code;
+
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
 }
