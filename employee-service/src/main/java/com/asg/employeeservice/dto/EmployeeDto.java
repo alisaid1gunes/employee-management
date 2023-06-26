@@ -2,15 +2,13 @@ package com.asg.employeeservice.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class EmployeeDto {
 
     private Long id;
@@ -27,5 +25,8 @@ public class EmployeeDto {
 
     @NotEmpty(message = "Department code is required.")
     private String departmentCode;
+
+    @NotEmpty(message = "Organization code is required.")
+    private String organizationCode;
 
 }

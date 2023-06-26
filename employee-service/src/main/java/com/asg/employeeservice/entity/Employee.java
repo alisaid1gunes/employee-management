@@ -28,4 +28,7 @@ public class Employee {
     @Column(nullable = false)
     private String departmentCode;
 
+    @Column(nullable = false)
+    private String organizationCode;
+
 }

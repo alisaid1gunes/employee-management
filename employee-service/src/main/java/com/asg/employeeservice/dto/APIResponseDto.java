@@ -1,15 +1,14 @@
 package com.asg.employeeservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class APIResponseDto {
     private EmployeeDto employee;
     private DepartmentDto department;
+    private OrganizationDto organization;
 }

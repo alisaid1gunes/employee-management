@@ -20,6 +20,17 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     }
 
+    @Override
+    public OrganizationDto getOrganizationById(Long id) {
+        Organization organization  = organizationRepository.findById(id).orElseThrow(() -> new RuntimeException("Organization not found"));
+        return OrganizationMapper.MAPPER.toDto(organization);
+    }
+
+    @Override
+    public OrganizationDto getOrganizationByCode(String code) {
+        Organization organization  = organizationRepository.findByCode(code).orElseThrow(() -> new RuntimeException("Organization not found"));
+        return OrganizationMapper.MAPPER.toDto(organization);
+    }
 
 
 }
